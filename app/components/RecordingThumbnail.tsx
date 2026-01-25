@@ -31,7 +31,7 @@ export function RecordingThumbnail({
   return (
     <div
       className={`relative h-[176px] w-[176px] ${
-        isOverlay ? "rotate-3 opacity-90" : ""
+        isOverlay ? "opacity-90" : ""
       }`}
     >
       <img
@@ -52,7 +52,16 @@ export function RecordingThumbnail({
         } ${shouldHideImage ? "opacity-0" : "opacity-100"}`}
         style={isOverlay ? {} : { touchAction: "none" }}
       />
-      <div className="absolute inset-0 bg-[#8B272D] border-2 border-[#F3E5CA] rounded-lg cursor-pointer mix-blend-multiply pointer-events-none"></div>
+      <div
+        className={`absolute inset-0 border-2 border-[#F3E5CA] rounded-lg cursor-pointer pointer-events-none ${
+          isOverlay || isDragging ? "" : "bg-panel-overlay mix-blend-multiply"
+        }`}
+        style={
+          isOverlay || isDragging
+            ? { backgroundColor: "var(--color-panel-overlay-drag)" }
+            : undefined
+        }
+      />
     </div>
   );
 }

@@ -9,7 +9,7 @@ export function DetailCenterPanel() {
   return (
     <div className="flex flex-col items-center justify-center flex-1">
       <CenterPanel selectedRecording={selectedRecording} />
-      <div className="w-full max-w-2xl flex items-center gap-4">
+      <div className="w-full max-w-2xl flex items-center gap-4 px-6">
         <PlayButton isPlaying={isPlaying} onToggle={togglePlay} />
         <ProgressBar progress={progress} />
       </div>

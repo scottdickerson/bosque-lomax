@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="relative">
         <BackgroundWithOverlay showLogo={showLogo} />
-        <div className="relative z-20 min-h-screen">{children}</div>
+        <div className="relative min-h-screen">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>

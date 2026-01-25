@@ -10,14 +10,19 @@ interface SongNavigationProps {
   className?: string;
 }
 
+const commonClasses: Record<"wrapper" | "link", string> = {
+  wrapper: "flex flex-col",
+  link: "rounded-4xl text-center font-medium tracking-wide bg-button whitespace-nowrap py-3  ",
+};
+
 const variantClasses: Record<Variant, { wrapper: string; link: string }> = {
   compact: {
-    wrapper: "mt-8 space-y-3",
-    link: "block bg-[#6b7d47] hover:bg-[#7a8d55] px-6 py-3 rounded-lg text-center transition-colors",
+    wrapper: `${commonClasses.wrapper} gap-8 `,
+    link: ` ${commonClasses.link} hover:brightness-110 px-6 text-2xl  `,
   },
   large: {
-    wrapper: "flex flex-col gap-4",
-    link: "bg-[#6b7d47] hover:bg-[#7a8d55] px-8 py-4 rounded-lg text-center text-lg font-semibold transition-colors",
+    wrapper: `${commonClasses.wrapper} gap-6 text-3xl`,
+    link: ` ${commonClasses.link} hover:brightness-110 px-12  `,
   },
 };
 
@@ -32,14 +37,12 @@ export function SongNavigation({
     : ALLOWED_SONG_IDS;
 
   return (
-    <div className={`${classes.wrapper} ${className}`}>
+    <div className={`${classes.wrapper} ${className} `}>
       {songIds.map((songId) => (
-        <Link
-          key={songId}
-          to={`/detail/${songId}`}
-          className={classes.link}
-        >
-          {SONG_DATA[songId].title}
+        <Link key={songId} to={`/detail/${songId}`} className={classes.link}>
+          {variant === "large"
+            ? SONG_DATA[songId].title
+            : SONG_DATA[songId].buttonLabel}
         </Link>
       ))}
     </div>

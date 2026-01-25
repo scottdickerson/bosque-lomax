@@ -20,6 +20,7 @@ import { LeftPanel } from "../components/LeftPanel";
 import { DetailCenterPanel } from "../components/DetailCenterPanel";
 import { RightPanel } from "../components/RightPanel";
 import { RecordingThumbnail } from "~/components/RecordingThumbnail";
+import { InactivityTimer } from "~/components/InactivityTimer";
 
 export function meta({ params }: Route.MetaArgs) {
   const song = ALLOWED_SONG_IDS.includes(params.id as SongId)
@@ -69,14 +70,16 @@ function DetailView() {
   };
 
   return (
-    <DndContext
+    <>
+      <InactivityTimer />
+      <DndContext
       sensors={sensors}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
       <div className="min-h-screen select-none">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex flex-row gap-6 h-[calc(100vh-4rem)]">
+        <div className="pl-[185px] pr-[100px] py-8">
+          <div className="flex flex-row gap-6 h-[calc(100vh-4rem)] items-center justify-between">
             <LeftPanel />
             <DetailCenterPanel />
             <RightPanel />
@@ -94,6 +97,7 @@ function DetailView() {
         </DragOverlay>
       ) : null}
     </DndContext>
+    </>
   );
 }
 

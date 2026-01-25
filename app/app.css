@@ -9,6 +9,10 @@
   --font-nexa-rust-sans: "Nexa Rust Sans", ui-sans-serif, sans-serif;
   --color-title-yellow: #e7c96b;
   --color-default: #f3e5ca;
+  --color-panel-overlay: #8b272d;
+  /* Translucent version for drag overlay (RGB 0.182, 0.034, 0.020 @ 85% opacity) */
+  --color-panel-overlay-drag: rgba(46, 9, 5, 0.85);
+  --color-button: #7e8849;
 }
 
 /* Gentium Book Basic */
@@ -62,7 +66,7 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950 text-default font-gentium-plus;
+  @apply bg-transparent text-default font-gentium-plus text-pretty;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
