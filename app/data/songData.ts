@@ -8,6 +8,7 @@ export interface Recording {
   year: string;
   artist: string;
   image: string;
+  audio: string;
 }
 
 export interface SongData {
@@ -26,26 +27,31 @@ export const SONG_DATA: Record<SongId, SongData> = {
         year: "1910",
         artist: "Original Recording",
         image: "/images/the-old-chisholm-trail/original-recording-1910.png",
+        audio: "/audio/the-old-chisholm-trail/original-recording-1910.mp3",
       },
       {
         year: "1928",
         artist: "Harry McClintock",
         image: "/images/the-old-chisholm-trail/harry-mcclintock-1928.png",
+        audio: "/audio/the-old-chisholm-trail/harry-mcclintock-1928.mp3",
       },
       {
         year: "1944",
         artist: "Woody Guthrie",
         image: "/images/the-old-chisholm-trail/woody-guthrie-1944.png",
+        audio: "/audio/the-old-chisholm-trail/woody-guthrie-1944.mp3",
       },
       {
         year: "1952",
         artist: "Gene Autry",
         image: "/images/the-old-chisholm-trail/gene-autry-1952.png",
+        audio: "/audio/the-old-chisholm-trail/gene-autry-1952.mp3",
       },
       {
         year: "1993",
         artist: "Randy Travis",
         image: "/images/the-old-chisholm-trail/randy-travis-1993.png",
+        audio: "/audio/the-old-chisholm-trail/randy-travis-1993.mp3",
       },
     ],
   },
@@ -58,26 +64,31 @@ export const SONG_DATA: Record<SongId, SongData> = {
         year: "1910",
         artist: "Original Recording",
         image: "/images/home-on-the-range/original-recording-1910.png",
+        audio: "/audio/home-on-the-range/original-recording-1910.mp3",
       },
       {
         year: "1927",
         artist: "Vernon Dalhart",
         image: "/images/home-on-the-range/vernon-dalhart-1927.png",
+        audio: "/audio/home-on-the-range/vernon-dalhart-1927.mp3",
       },
       {
         year: "1939",
         artist: "James Richardson",
         image: "/images/home-on-the-range/james-richardson-1939.png",
+        audio: "/audio/home-on-the-range/james-richardson-1939.mp3",
       },
       {
         year: "1947",
         artist: "Roy Rogers",
         image: "/images/home-on-the-range/roy-rogers-1947.png",
+        audio: "/audio/home-on-the-range/roy-rogers-1947.mp3",
       },
       {
         year: "2006",
         artist: "Tori Amos",
         image: "/images/home-on-the-range/tori-amos-2006.png",
+        audio: "/audio/home-on-the-range/tori-amos-2006.mp3",
       },
     ],
   },
@@ -90,26 +101,31 @@ export const SONG_DATA: Record<SongId, SongData> = {
         year: "1926",
         artist: "Dock Walsh",
         image: "/images/where-did-you-sleep-last-night/dock-walsh-1926.png",
+        audio: "/audio/where-did-you-sleep-last-night/dock-walsh-1926.mp3",
       },
       {
         year: "1939",
         artist: "Lead Belly",
         image: "/images/where-did-you-sleep-last-night/lead-belly-1939.png",
+        audio: "/audio/where-did-you-sleep-last-night/lead-belly-1939.mp3",
       },
       {
         year: "1993",
         artist: "Nirvana",
         image: "/images/where-did-you-sleep-last-night/nirvana-1993.png",
+        audio: "/audio/where-did-you-sleep-last-night/nirvana-1993.mp3",
       },
       {
         year: "1994",
         artist: "Dolly Parton",
         image: "/images/where-did-you-sleep-last-night/dolly-parton-1994.png",
+        audio: "/audio/where-did-you-sleep-last-night/dolly-parton-1994.mp3",
       },
       {
         year: "2016",
         artist: "Fantastic Negrito",
         image: "/images/where-did-you-sleep-last-night/fantastic-negrito-2016.png",
+        audio: "/audio/where-did-you-sleep-last-night/fantastic-negrito-2016.mp3",
       },
     ],
   },
