@@ -5,9 +5,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import { BackgroundWithOverlay } from "./components/BackgroundWithOverlay";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -24,6 +26,9 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const showLogo = location.pathname === "/";
+
   return (
     <html lang="en">
       <head>
@@ -32,8 +37,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="relative">
+        <BackgroundWithOverlay showLogo={showLogo} />
+        <div className="relative z-20 min-h-screen">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </body>

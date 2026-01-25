@@ -1,8 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-gentium-basic: "Gentium Book Basic", ui-serif, Georgia, serif;
+  --font-gentium-plus: "Gentium Book Plus", ui-serif, Georgia, serif;
+  --font-nexa-rust-sans: "Nexa Rust Sans", ui-sans-serif, sans-serif;
+  --color-title-yellow: #e7c96b;
+  --color-default: #f3e5ca;
+}
+
+/* Gentium Book Basic */
+@font-face {
+  font-family: "Gentium Book Basic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/gentium-book-basic-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Gentium Book Basic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/gentium-book-basic-bold.woff2") format("woff2");
+}
+
+/* Gentium Book Plus */
+@font-face {
+  font-family: "Gentium Book Plus";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/gentium-book-plus-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Gentium Book Plus";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/gentium-book-plus-bold.woff2") format("woff2");
+}
+
+/* Nexa Rust Sans */
+@font-face {
+  font-family: "Nexa Rust Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/nexa-rust-sans-trial-black2.woff2") format("woff2");
 }
 
 .bg-woodgrain {
@@ -15,7 +62,7 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white dark:bg-gray-950 text-default font-gentium-plus;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;

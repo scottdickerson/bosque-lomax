@@ -124,8 +124,10 @@ export const SONG_DATA: Record<SongId, SongData> = {
       {
         year: "2016",
         artist: "Fantastic Negrito",
-        image: "/images/where-did-you-sleep-last-night/fantastic-negrito-2016.png",
-        audio: "/audio/where-did-you-sleep-last-night/fantastic-negrito-2016.mp3",
+        image:
+          "/images/where-did-you-sleep-last-night/fantastic-negrito-2016.png",
+        audio:
+          "/audio/where-did-you-sleep-last-night/fantastic-negrito-2016.mp3",
       },
     ],
   },

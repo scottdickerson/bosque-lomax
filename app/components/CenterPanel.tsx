@@ -26,7 +26,7 @@ export function CenterPanel({ selectedRecording }: CenterPanelProps) {
           className="w-full h-full object-cover transition-all duration-1000 ease-in-out"
         />
       ) : (
-        <p className="text-yellow-400 text-xl font-semibold text-center px-8 z-10">
+        <p className="text-title-yellow text-xl text-center px-8 z-10 font-nexa-rust-sans font-black">
           DRAG A RECORDING HERE TO PLAY
         </p>
       )}
