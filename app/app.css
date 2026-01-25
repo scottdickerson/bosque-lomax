@@ -5,6 +5,14 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.bg-woodgrain {
+  background-image: url("/images/background-woodgrain.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 html,
 body {
   @apply bg-white dark:bg-gray-950;
