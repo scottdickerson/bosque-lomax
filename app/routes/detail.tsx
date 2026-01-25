@@ -11,11 +11,17 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { SONG_DATA, ALLOWED_SONG_IDS, SongId, type Recording } from "../data/songData";
+import {
+  SONG_DATA,
+  ALLOWED_SONG_IDS,
+  SongId,
+  type Recording,
+} from "../data/songData";
 import { RecordingList } from "../components/RecordingList";
 import { CenterPanel } from "../components/CenterPanel";
 import { PlayButton } from "../components/PlayButton";
 import { ProgressBar } from "../components/ProgressBar";
+import { RecordingThumbnail } from "~/components/RecordingThumbnail";
 
 const SONG_BUTTON_LABELS: Record<SongId, string> = {
   [SongId.HomeOnTheRange]: "Home on the Range",
@@ -39,7 +45,7 @@ export function meta({ params }: Route.MetaArgs) {
 export default function Detail({ params }: Route.ComponentProps) {
   const { id } = params;
   const [selectedRecording, setSelectedRecording] = useState<Recording | null>(
-    null
+    null,
   );
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -47,7 +53,7 @@ export default function Detail({ params }: Route.ComponentProps) {
   const [isEnded, setIsEnded] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [activeRecording, setActiveRecording] = useState<Recording | null>(
-    null
+    null,
   );
 
   // Configure sensors with activation constraints to prevent accidental drags
@@ -62,7 +68,7 @@ export default function Detail({ params }: Route.ComponentProps) {
         delay: 200, // 200ms delay before drag starts on touch
         tolerance: 8, // 8px movement tolerance
       },
-    })
+    }),
   );
 
   if (!ALLOWED_SONG_IDS.includes(id as SongId)) {
@@ -102,29 +108,29 @@ export default function Detail({ params }: Route.ComponentProps) {
     }
   }, [id]);
 
-  // Update audio source when selectedRecording changes
-  useEffect(() => {
-    if (selectedRecording && audioRef.current) {
-      audioRef.current.src = selectedRecording.audio;
-      audioRef.current.load();
-      setCurrentTime(0);
-      setIsEnded(false);
-      
-      // Auto-play when a recording is selected
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch((error) => {
-            // Auto-play was prevented (browser policy)
-            console.log("Auto-play prevented:", error);
-            setIsPlaying(false);
-          });
-      }
+  // Handle audio loading and playback
+  const loadAndPlayAudio = (recording: Recording) => {
+    if (!audioRef.current) return;
+
+    audioRef.current.src = recording.audio;
+    audioRef.current.load();
+    setCurrentTime(0);
+    setIsEnded(false);
+
+    // Auto-play when a recording is selected
+    const playPromise = audioRef.current.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          // Auto-play was prevented (browser policy)
+          console.log("Auto-play prevented:", error);
+          setIsPlaying(false);
+        });
     }
-  }, [selectedRecording]);
+  };
 
   // Handle drag start
   const handleDragStart = (event: DragStartEvent) => {
@@ -138,15 +144,15 @@ export default function Detail({ params }: Route.ComponentProps) {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
+    // Clear active recording immediately to hide DragOverlay
+    setActiveRecording(null);
+
     if (over && over.id === "drop-zone" && active.data.current) {
       const recording = active.data.current as Recording;
-      // Set selected recording first, then clear active recording
-      // This ensures the image stays hidden during the transition
       setSelectedRecording(recording);
-      // Audio will auto-play via the useEffect hook
+      // Load and play audio directly
+      loadAndPlayAudio(recording);
     }
-
-    setActiveRecording(null);
   };
 
   // Handle play/pause toggle
@@ -207,17 +213,13 @@ export default function Detail({ params }: Route.ComponentProps) {
     if (audio.error) {
       console.error(
         `Failed to load audio: ${selectedRecording?.audio}`,
-        audio.error
+        audio.error,
       );
     }
   };
 
   // Calculate progress ratio - show full (1.0) when ended, otherwise calculate normally
-  const progress = isEnded
-    ? 1.0
-    : duration > 0
-      ? currentTime / duration
-      : 0;
+  const progress = isEnded ? 1.0 : duration > 0 ? currentTime / duration : 0;
 
   return (
     <DndContext
@@ -225,7 +227,7 @@ export default function Detail({ params }: Route.ComponentProps) {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className="min-h-screen bg-woodgrain">
+      <div className="min-h-screen bg-woodgrain select-none">
         <div className="container mx-auto px-6 py-8">
           <div className="flex flex-row gap-6 h-[calc(100vh-4rem)]">
             {/* Left Panel */}
@@ -246,7 +248,7 @@ export default function Detail({ params }: Route.ComponentProps) {
                     >
                       {SONG_BUTTON_LABELS[otherSongId]}
                     </Link>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -274,23 +276,20 @@ export default function Detail({ params }: Route.ComponentProps) {
               recordings={song.recordings}
               songId={id}
               selectedRecording={selectedRecording}
-              activeRecording={activeRecording}
             />
           </div>
         </div>
       </div>
-      <DragOverlay>
-        {activeRecording ? (
-          <div className="relative h-[176px] w-[176px] rotate-3 opacity-90">
-            <img
-              src={activeRecording.image}
-              alt={activeRecording.artist}
-              className="relative w-full h-full object-cover rounded-lg z-10 shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-[#8B272D] border-2 border-[#F3E5CA] rounded-lg mix-blend-multiply"></div>
-          </div>
-        ) : null}
-      </DragOverlay>
+      {activeRecording ? (
+        <DragOverlay>
+          <RecordingThumbnail
+            recording={activeRecording}
+            id={`overlay-${activeRecording.image}`}
+            selectedRecording={null}
+            isOverlay={true}
+          />
+        </DragOverlay>
+      ) : null}
     </DndContext>
   );
 }
