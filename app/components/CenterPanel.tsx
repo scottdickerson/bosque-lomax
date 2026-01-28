@@ -30,7 +30,7 @@ export function CenterPanel({ selectedRecording }: CenterPanelProps) {
           className="relative z-10 w-full h-full object-cover transition-all duration-1000 ease-in-out"
         />
       ) : (
-        <p className="relative z-10 text-title-yellow text-xl text-center px-8 font-nexa-rust-sans font-black">
+        <p className="relative z-10 text-title-yellow text-xl text-center px-8 font-nexa-rust-sans-black3 nexa-rust-wght-900">
           DRAG A RECORDING
           <br /> HERE TO PLAY
         </p>

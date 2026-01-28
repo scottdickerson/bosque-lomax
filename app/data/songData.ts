@@ -96,7 +96,7 @@ export const SONG_DATA: Record<SongId, SongData> = {
     ],
   },
   [SongId.WhereDidYouSleepLastNight]: {
-    title: "Where Did You Sleep Last Night \n (In the Pines)",
+    title: "Where Did You \n Sleep Last Night \n (In the Pines)",
     buttonLabel: "Where Did You Sleep Last Night?",
     description:
       "Originally an Appalachian folk tune (adapted from an even earlier Scots-Irish song), this eerie song of love and loss has been interpreted through many different musical genres. Each musician adds their own changes to the verses and the emotional style. Kurt Cobain of Nirvana mistakenly attributed this song to Lead Belly after hearing Lomax’s recordings and reawakened public interest in Lead Belly’s work and his musical partnership with Lomax.",

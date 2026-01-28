@@ -6,7 +6,15 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-gentium-basic: "Gentium Book Basic", ui-serif, Georgia, serif;
   --font-gentium-plus: "Gentium Book Plus", ui-serif, Georgia, serif;
-  --font-nexa-rust-sans: "Nexa Rust Sans", ui-sans-serif, sans-serif;
+  --font-nexa-rust-sans-black3:
+    "Nexa Rust Sans Black3", ui-sans-serif, sans-serif;
+  --font-nexa-rust-sans-black2:
+    "Nexa Rust Sans Black2", ui-sans-serif, sans-serif;
+  /* Subtle “rust” edge break-up for titles using Nexa Rust Sans */
+  --title-shadow:
+    0 0 1px rgba(0, 0, 0, 0.3), 1px 0 0 rgba(0, 0, 0, 0.08),
+    -1px 0 0 rgba(0, 0, 0, 0.08), 0 1px 0 rgba(0, 0, 0, 0.08),
+    0 -1px 0 rgba(0, 0, 0, 0.08);
   --color-title-yellow: #e7c96b;
   --color-default: #f3e5ca;
   --color-panel-overlay: #8b272d;
@@ -47,13 +55,38 @@
   src: url("/fonts/gentium-book-plus-bold.woff2") format("woff2");
 }
 
-/* Nexa Rust Sans */
+/* Nexa Rust Sans (variable or single weight, controlled via font-variation-settings) */
 @font-face {
-  font-family: "Nexa Rust Sans";
+  font-family: "Nexa Rust Sans Black3";
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url("/fonts/nexa-rust-sans-trial-black2.woff2") format("woff2");
+  src: url("/fonts/nexa-rust-sans-black03.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Nexa Rust Sans Black2";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/nexa-rust-sans-black02.woff2") format("woff2");
+}
+
+/* Heavy weight + OpenType features so distressed alternates are used (see font’s ss01–ss20 / salt / cv01–cv99) */
+.nexa-rust-wght-900 {
+  font-weight: 900; /* fallback when font is static */
+  font-variation-settings: "wght" 900;
+  /* Enable stylistic sets and alternates; if no change, inspect WOFF2 at https://wakamaifondue.com/ and use the feature tags it lists */
+  font-feature-settings:
+    "ss01" 1,
+    "ss02" 1,
+    "ss03" 1,
+    "salt" 1;
+  -webkit-font-feature-settings:
+    "ss01" 1,
+    "ss02" 1,
+    "ss03" 1,
+    "salt" 1;
 }
 
 .bg-woodgrain {

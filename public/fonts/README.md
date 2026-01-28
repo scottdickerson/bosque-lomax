@@ -13,3 +13,5 @@ Nexa Rust Sans is a commercial font by [Fontfabric](https://www.fontfabric.com/f
 - `nexa-rust-sans-bold.woff2` (and optionally `nexa-rust-sans-bold.woff`)
 
 If your pack uses different filenames, update the `@font-face` rules in `app/app.css` to match.
+
+For the heavily **distressed/weathered** title look (rough edges, speckling), that’s usually **Nexa Rust Handmade** (or a specific Sans style from the full pack). Add a Handmade webfont and a separate `@font-face` in `app/app.css` if you want to use that variant for titles.
