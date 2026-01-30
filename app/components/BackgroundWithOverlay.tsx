@@ -23,7 +23,7 @@ export function BackgroundWithOverlay({
           aria-hidden
         >
           <img
-            src="/images/title-banner.png"
+            src="/images/title-banner.webp"
             alt="The Lomax Legacy"
             className="max-w-full h-auto"
           />
