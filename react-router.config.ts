@@ -1,7 +1,10 @@
-import { vercelPreset } from "@vercel/react-router/vite";
 import type { Config } from "@react-router/dev/config";
+import { SongId } from "./app/data/songData";
 
 export default {
-  ssr: true,
-  presets: [vercelPreset()],
+  ssr: false,
+  prerender: [
+    "/",
+    ...Object.values(SongId).map((id) => `/detail/${id}`),
+  ],
 } satisfies Config;
