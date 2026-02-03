@@ -66,6 +66,7 @@ To deploy to Vercel on push to main, use `npm run deploy` or connect the repo in
 - Open the [GNOME Extensions](https://extensions.gnome.org/) site in Firefox and download the [disable-gestures 2021](https://extensions.gnome.org/extension/4049/disable-gestures-2021/) extension.
 - Open the Extensions app in Gnome desktop and disable all UI features except the Desktop Icons one; enable the disable-gestures extension and tiling assistant.
 - Disable the keyring prompt in [Gnome](https://askubuntu.com/questions/867/how-can-i-stop-being-prompted-to-unlock-the-default-keyring-on-boot).
+- Turn off the accessibility features in Chrome settings to navigate on swipe back and forward
 - Add Chrome to the "Startup Applications" app in Gnome with the desired CLI parameters by copying the `chrome.desktop` file to the `~/.config/autostart` directory.
 - [Firefox disable tab detach](https://www.reddit.com/r/firefox/comments/1j896fb/is_there_any_fix_for_browsertabsallowtabdetach/).
 - [Disable edge tiling on Ubuntu](https://strugglers.net/~andy/mothballed-blog/2017/12/14/disabling-edge-tiling-on-gnome-3-26/).
